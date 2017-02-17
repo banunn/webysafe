@@ -1,0 +1,68 @@
+<div class="profile">
+<div class="top-hat">
+    <div class="prof-hat">
+        <button class="alerts"><span class="alert">3</span><i class="material-icons">notifications</i></button>
+    </div>
+</div> 
+<div class="jumbotron">
+   <div class="profile">
+       <button class="image-upload"><i class="material-icons">photo_camera</i></button>
+        <div class="frame">
+            <img src="{{profile.meta.picture}}" alt="">
+        </div>
+        <div class="details">
+            <h2>{{profile.name.first + " " + profile.name.last}}</h2>
+            <h4 class="email">{{profile.meta.email}}</h4>
+        </div>
+    </div>
+</div>
+<div class="profile-content">
+    <div class="row">
+        <div class="form-ctrl col-6">
+            <label for="">First Name</label>
+            <input type="text" ng-model="profile.name.first">
+        </div>
+        <div class="form-ctrl col-6">
+            <label for="">Last Name</label>
+            <input type="text" ng-model="profile.name.last">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-ctrl col-6">
+            <label for="">Email</label>
+            <input type="email" ng-model="profile.meta.email">
+        </div>
+        <div class="form-ctrl col-6">
+            <label for="">Phone</label>
+            <input type="phone" ng-value="profile.meta.phone">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-ctrl col-9">
+            <label for="">Street Address</label>
+            <input type="email" ng-value="profile.address.street">
+        </div>
+        <div class="form-ctrl col-3">
+            <label for="">Apt #</label>
+            <input type="phone" ng-value="profile.address.apt">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-ctrl col-7">
+            <label for="">City</label>
+            <input type="email" ng-value="profile.address.city">
+        </div>
+        <div class="form-ctrl col-2">
+            <label for="">State</label>
+            <input type="email" ng-value="profile.address.state">
+        </div>
+        <div class="form-ctrl col-3">
+            <label for="">Zip Code</label>
+            <input type="phone" ng-value="profile.address.zip">
+        </div>
+    </div>
+</div>
+<footer class="controls">
+    <button class="btn">Revert</button><button class="btn filled">Save Changes</button>
+</footer>
+</div>

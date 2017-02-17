@@ -1,0 +1,82 @@
+<div class="tabs documents-tab">
+    <header class="tabs-head">
+        <ul>
+            <li ng-repeat="d in data" ng-click="$parent.activeTab = d.parent; $parent.current = d" ng-class="{'active': activeTab == d.parent}">
+                <i class="material-icons delete" title="delete tab" ng-click="$parent.showModal = true; $parent.modal = 'tab'">close</i>
+                {{d.parent}}
+            </li>
+            <li ng-class="{'open': addTab == true , 'active': addTab == true}" class="newTab">
+                <input type="text" placeholder="add title" ng-focus="addTab == true" ng-model="newTab" ng-keydown="$event.which === 13 && addNewTab(newTab)" />
+                <i class="material-icons" ng-click="addTab = false" title="cancel">close</i>
+            </li>
+            <li ng-click="addTab = true; " ng-class="{'active': activeTab == 'add'}" class="add"><i class="material-icons">add</i></li>
+        </ul>
+    </header>
+    <section class="tab-body documents-body">
+        <header>
+            <div><input id="check-all" type="checkbox" select-all title="select all"> <label for="check-all"></label> </div>
+            <div></div>
+            <div>Name <i class="material-icons">keyboard_arrow_down</i> </div>
+            <div class="doc-modified">Last Modified</div>
+        </header>
+        <ul ng-repeat="d in data" ng-show="activeTab == d.parent">
+            <div class="item-alert" ng-show="d.content < 1">No documents have been added</div>
+            <li ng-repeat="i in d.content" ng-class="{'suggestion': i.suggestion}">
+                <div class="doc-check"><input id="check-{{$index}}-{{i.name}}" type="checkbox" /><label ng-click="selectItem(i);" for="check-{{$index}}-{{i.name}}"></label></div>
+                <div class="doc-info"><i ng-if="i.suggestion" class="material-icons">lightbulb_outline</i></div>
+                <div class="doc-name" ng-bind="i.name"></div>
+                <div ng-if="!i.suggestion" class="doc-modified" ng-bind="i.modified | date:'MMMM d yyyy, hh:mma' |  lowercase">January 1 2017, 6:53am</div>
+                <div ng-if="i.suggestion"><a ng-click="sugModal(i.name);">Click to Create</a></div>
+            </li>
+           <!--  <li class="item-input" ng-class="'open': addItem == true">
+                <div class="doc-check"></div>
+                <div class="doc-info"><i class="material-icons">lightbulb_outline</i></div>
+                <div class="doc-add"><a ng-click="addItem()">Add a new item</a></div>
+                <div class="doc-modified" ng-bind="i.modified | date:'MMMM d yyyy, hh:mma' |  lowercase"></div>
+            </li> -->
+
+            <!--- add new item and provide activeTab to the function. When a new item is added, reset the active tab to the current one. -->
+        </ul>
+    </section> 
+</div>
+
+
+<div class="modal-wrap" ng-class="{'open': showModal}">
+    <div class="modal">
+        <header class="delete" ng-show="modal == 'tab'">
+            <div>
+                <i class="material-icons">warning</i>
+                <h2>Delete this tab?</h2>
+            </div>
+        </header>
+        <main ng-show="modal == 'tab'">
+            <p class="warning">Warning: this cannot be undone.</p>
+            <div class="accept">
+                <input type="checkbox" id="accept" ng-click="deleteAccept = !deleteAccept" ng-checked="deleteAccept">
+                <label for="accept">I understand that deleting this tab will also delete all of its contents.</label> 
+            </div>
+        </main>
+
+        <footer class="delete" ng-show="modal == 'tab'">
+             <button class="btn filled action" ng-class="{'open': deleteAccept == true}"  ng-click="deleteAccept = false; deleteTab(current); showModal = false;">Yes, Delete</button>
+             <button class="btn btn-close" ng-click="showModal = false">Cancel, Keep tab</button>
+        </footer>
+
+        <header class="upload" ng-show="modal == 'upload'">
+            <div>
+                <i class="material-icons">description</i>
+                <h2>Upload a Document</h2>
+            </div>
+        </header>
+        <main ng-show="modal == 'upload'">
+            <input type="text" ng-model="itemName" placeholder="item title">
+            <div class="upload">
+                <p>Upload A Document</p>
+            </div> 
+        </main>
+        <footer class="upload" ng-show="modal == 'upload'">
+             <button class="btn filled action" ng-class="{'open': itemName.length > 0}" ng-click="deleteItem(itemName); showModal = false; newItem(currentList, itemName);">Add Document</button>
+             <button class="btn btn-close" ng-click="showModal = false">Cancel</button>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+.docs-body {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 55px;
+    font-size: 14px;
+    padding: 0 75px;
+}
+.doc-hat {
+    display: flex;
+    flex-direction: flex-start;
+    align-items: center;
+
+span  {
+    font-size: 14px;
+font-weight: bold;
+line-height: 16px;
+color: rgba(black, .84);
+text-transform: uppercase;
+}
+.toggle {
+    width: 34px;
+    height: 14px;
+    border-radius: 25px;
+    background: #b7b8bc;
+    position: relative;
+    display: inline-block;
+    transition: background-color .25s ease;
+    margin-right: 20px;
+    margin-left: 5px;
+    &:after {
+        content: '';
+        display: block;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: #eaeaea;
+        box-shadow: 0 0 1px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.24);
+        position: absolute;
+        left:0;
+        bottom:0;
+        transform: translate(0%, 3px);
+        transition: transform $time, background-color .25s ease;
+    }
+    &.on {
+        background: rgba(102, 220, 165, 1.0);
+        &:after {
+            transform: translate(16px, 3px);
+            background-color: #00C853;
+        }
+    }
+}
+    .delete {
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity .35s ease-out, transform .25s ease;
+        transform: translateX(-10px);
+        &.open {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    .btn {
+        margin-left: auto;
+        align-self: flex-end;
+    }
+}
+
+.show-suggustions {
+     .suggestion {
+       visibility: inherit !important;
+       opacity: .65 !important;
+    }
+}

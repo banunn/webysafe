@@ -1,0 +1,72 @@
+.delegation-wrap {
+    max-width: 100%; 
+    margin: 75px;
+    .row {
+        display: flex;
+
+        .delegate {
+            flex: 1;
+            margin: 30px;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.17), 0 0 4px 0 rgba(0,0,0,0.12);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 30px 15px;
+            &:first-of-type{
+                margin-left:0;
+            }
+            &:last-of-type{
+                margin-right:0;
+            }
+            .frame {
+                max-width: 125px;
+                height: 125px;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 3px solid rgba(0,0,0,0.1);
+                img {
+                    max-width: 100%;
+                    transform: scale(1);
+                }
+            }
+            h4 {
+                font-size: 15px;
+                font-weight: 500;
+                text-align: center;
+                line-height: 18px;
+                color: #141E34;
+                margin:10px 0 0;
+            }
+            span {
+                opacity: 0.54;
+                font-size: 13px;
+                text-align: center;
+                line-height: 15px;
+                color: #000000;
+            }
+            footer {
+                border-top: 1px solid rgba(black, .10);
+                width: 100%;
+                margin-top: 30px;
+                display: flex;
+                justify-content: flex-end;
+
+                .btn {padding: 7.5px 15px; font-size: 12px; margin: 10px 10px 0 0;}
+                &.action {
+                    justify-content: center;
+                    border-top: 1px solid #fff;
+                }
+                i {
+                    margin-right: 10px; 
+                    color: #c0c0c0; 
+                    cursor: pointer;
+                    &:last-of-type {margin-right:0;}
+                }
+                .controls {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+}

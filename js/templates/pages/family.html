@@ -1,0 +1,55 @@
+<div class="profile">
+<div class="top-hat">
+    <div class="fam-hat">
+        <span>suggestions <span ng-click="toggle = !toggle" ng-class="{'on': toggle}" class="toggle"></span></span>
+        <button class="alerts icon-btn"><i class="material-icons">file_download</i></button>
+        <button class="alerts icon-btn"><i class="material-icons">send</i></button>
+        <button class="alerts icon-btn delete" ng-class="{'open': selected}" ng-click="showModal = true; modal = 'delete'"><i class="material-icons">delete</i></button>
+        <button class="btn filled" ng-click="showModal = true; modal = 'upload'">Create New</button>
+    </div>
+</div>
+
+<div class="fam-body" ng-class="{'show-suggustions': toggle}">
+     <web-tabs data="family"  current="currentList" selected="selected"></web-tabs>
+</div>
+
+</div>
+
+<div class="modal-wrap" ng-class="{'open': showModal}">
+    <div class="modal">
+        <header class="upload" ng-show="modal == 'upload'">
+            <div>
+                <i class="material-icons">description</i>
+                <h2>Upload a Document</h2>
+            </div>
+        </header>
+        <header class="delete" ng-show="modal == 'delete'">
+            <div>
+                <i class="material-icons">warning</i>
+                <h2>Delete {{selected}} {{selected > 1 ? 'Documents' : 'Document' }}</h2>
+            </div>
+        </header>
+        <main ng-show="modal == 'upload'">
+            <input type="text" ng-model="itemName" placeholder="item title">
+            <div class="upload">
+                <p>Upload A Document</p>
+            </div> 
+        </main>
+        <main ng-show="modal == 'delete'">
+            <p class="warning">Warning: this cannot be undone.</p>
+            <div class="accept">
+                <input type="checkbox" id="accept" ng-click="deleteAccept = !deleteAccept" ng-checked="deleteAccept">
+                <label for="accept">I understand that deleting {{selected > 1 ? 'these documents' : 'this document' }} will also delete all of its contents.</label> 
+            </div>
+        </main>
+        <footer class="upload" ng-show="modal == 'upload'">
+             <button class="btn filled action" ng-class="{'open': itemName.length > 0}" ng-click="showModal = false; newItem(currentList, itemName)">Add Document</button>
+             <button class="btn btn-close" ng-click="showModal = false">Cancel</button>
+        </footer>
+
+        <footer class="delete" ng-show="modal == 'delete'">
+             <button class="btn filled action" ng-class="{'open': deleteAccept == true}"  ng-click="deleteAccept = false; deleteItems(family); showModal = false;">Yes, Delete</button>
+             <button class="btn btn-close" ng-click="showModal = false">Cancel, Keep Document</button>
+        </footer>
+    </div>
+</div>

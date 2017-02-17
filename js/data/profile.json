@@ -1,0 +1,26 @@
+[
+    {
+        "name": {
+            "first": "Gina",
+            "last": "Bradford",
+            "middle": ""
+        },
+        "meta": {
+            "email": "gina.bradford@email.com",
+            "phone": "918-555-5555",
+            "picture": "img/user.jpg"
+        },
+        "address": {
+            "street": "12934 S. Willor Springs Ct.",
+            "apt": "1111",
+            "city": "Tulsa",
+            "state": "OK",
+            "zip": "74136"
+        },
+        "alerts": {
+            "alert": {
+                "name": "Example Alert Title"
+            }
+        }
+    }
+]

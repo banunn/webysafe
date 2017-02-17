@@ -1,0 +1,41 @@
+
+
+input[type="email"],input[type="text"], input[type="phone"], input[type="number"]  
+{
+    padding: 15px 0;
+    border: none;
+    border-bottom: 1px solid $darkGray;
+    display: block;
+    width: 100%;
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid $brandBlue;
+    }
+}
+
+.btn {
+    background: #fff;
+    border: 1px solid $brandBlue;
+    color: $brandBlue;
+    display: inline-block;
+    padding: 15px 25px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .85em;
+    border-radius: 2px;
+    cursor: pointer;
+    &:active {
+        transform: translateY(1px);
+    }
+    &:hover {
+        background: $brandBlue;
+        color: #fff;
+    }
+    &.filled {
+        background: $brandBlue;
+        color: #fff;
+        &:hover {
+            background: darken($brandBlue, 5%);
+        }
+    }
+}

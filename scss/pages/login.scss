@@ -1,0 +1,81 @@
+.app-login {
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:after {
+        content: '';
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        z-index: 10;
+        background: $darkBlue;
+        opacity: .9;
+        box-shadow: inset 0px 0px 100px 50px rgba(black, .35);
+    }
+
+    .login {
+        position: relative;
+        z-index: 20;
+        min-width: 320px;
+        .brand {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            i {
+                position: absolute;
+                top: .85em;
+                color: $brandBlue;
+                font-size: 18px;
+            }
+        }
+        .input-style{
+            border: none;
+            background: transparent;
+            border-bottom: 1px solid #38435d;
+            padding: 15px 10px 15px 25px;
+            display: block;
+            width: 100%;
+            color: #fff;
+            &:focus {
+                outline: none;
+                border-bottom: 1px solid $brandBlue;
+            }
+        }
+        input[type="text"] { @extend .input-style;} 
+        input[type="password"] { @extend .input-style;}
+        .cta {
+            text-align: center;
+            a {
+                font-size: 12px;
+                text-decoration: none;
+                text-transform: uppercase;
+                color: $brandBlue;
+                letter-spacing: .25px;
+                opacity: .65;
+                transition: opacity .25s ease;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        footer {
+            padding-top: 15px;
+            margin-bottom: 25px;
+            .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                text-decoration: none;
+                font-weight: 200;
+                letter-spacing: .5px;
+            }
+        }
+    }
+}

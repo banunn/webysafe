@@ -1,0 +1,76 @@
+<div class="person-wrap" ng-controller="delegateCtrl">
+    <header class="controls"><button ui-sref="delegation" class="icon-btn"><i class="material-icons">close</i></button></header>
+
+    <div class="profile">
+            <div class="frame">
+                <img src="img/ppic.jpeg" alt="">
+            </div>
+            <div class="details">
+                <h2>Shiela Sanders</h2>
+                <h4 class="email">{{profile.meta.email}}</h4>
+            </div>
+    </div>
+
+
+    <div class="sub-menu" ng-init="personTab = 'cred'">
+        <a ng-class="{'active': personTab == 'cred'}" ng-click="personTab = 'cred'">Credentials</a>
+        <a ng-class="{'active': personTab == 'docs'}" ng-click="personTab = 'docs'">Documents</a>
+        <a ng-class="{'active': personTab == 'fam'}" ng-click="personTab = 'fam'">Family</a>
+    </div>
+
+    <div class="sub-tab" ng-show="personTab == 'cred'">
+        <div class="top-hat">
+    <div class="doc-hat">
+        <button class="alerts icon-btn"><i class="material-icons">file_download</i></button>
+        <button class="alerts icon-btn"><i class="material-icons">send</i></button>
+    </div>
+</div>
+<div class="accounts-list">
+    <header class="accounts-head">
+        <div>  <input id="check-all" type="checkbox" select-all title="select all"> <label for="check-all"></label> </div>
+        <div>Account <i class="material-icons">keyboard_arrow_down</i> </div>
+        <div>Username</div>
+        <div>Password</div>
+        <div></div>
+    </header> 
+    <ul dnd-list="creds">
+        <li ng-repeat="c in creds">
+            <div class="account-select"><input id="{{'cred-' + $index}}" type="checkbox" /><label ng-click="selectItem(c);" for="{{'cred-' + $index}}"></label></div>
+            <div class="account-name">{{c.account}}</div>
+            <div class="account-user">{{c.username}}</div>
+            <div class="account-password">{{c.password}}</div>
+            <div class="account-edit"><!-- <i class="material-icons">mode_edit</i> --></div>
+        </li>
+        <li class="cred-create" ng-class="{'active': createCred == true}">
+            <div class="account-select"><i class="material-icons" title='close "new account" tool' ng-click="createCred = false">close</i><input id="{{'cred-' + $index}}" type="checkbox" /><label for="{{'cred-' + $index}}"></label></div>
+            <div class="account-name"><input placeholder="account name" type="text" ng-model="newName"></div>
+            <div class="account-user"><input placeholder="username" type="text" ng-model="newUser"></div>
+            <div class="account-password"><input placeholder="password" type="text" ng-model="newPass"></div>
+            <div class="account-edit"><i class="material-icons" ng-click="createCred = !createCred; createItem(newName,newUser,newPass); clearSearch();">done</i></div>
+        </li>
+    </ul>
+</div> 
+    </div>
+    <div class="sub-tab" ng-show="personTab == 'docs'">
+<div class="top-hat">
+    <div class="doc-hat">
+        <button class="alerts icon-btn"><i class="material-icons">file_download</i></button>
+        <button class="alerts icon-btn"><i class="material-icons">send</i></button>
+    </div>
+</div>
+    <div class="docs-body">
+    <web-tabs data="documents" start="1" current="docList" selected="selected" is-add="false"></web-tabs>
+</div><!-- end docs body -->
+    </div>
+    <div class="sub-tab" ng-show="personTab == 'fam'">
+<div class="top-hat">
+    <div class="doc-hat">
+        <button class="alerts icon-btn"><i class="material-icons">file_download</i></button>
+        <button class="alerts icon-btn"><i class="material-icons">send</i></button>
+    </div>
+</div> 
+    <div class="docs-body">
+    <web-tabs data="family" start="1" current="famList" selected="selected" is-add="false"></web-tabs>
+</div><!-- end docs body -->       
+    </div>
+</div>

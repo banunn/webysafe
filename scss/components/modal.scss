@@ -1,0 +1,147 @@
+.modal-wrap {
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba($darkBlue, .85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .35s ease-out, opacity .25s ease;
+    .modal {
+        width: 450px;
+        transform: translateY(-10%);
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0px 3px 5px rgba(black, .65);
+        transform: scale(.85);
+        opacity: 0;
+        width: 65%;
+        max-width: 700px;
+        transition: transform .35s ease-out, opacity .25s ease;
+        header {
+            &.upload {}
+            background: #fff;
+            color: #F0314A;
+            padding: 50px 60px;
+            text-align: center;
+            border-bottom: 2px solid rgba(235, 237, 240, 1.0);
+            h2 {
+                font-weight: normal;
+                margin: 20px 0 0;
+                font-size: 30px;
+                text-align: center;
+                line-height: 35px;
+                color: #F0314A;
+            }
+            i.material-icons {
+                font-size: 48px;
+            }
+            &.upload {
+                color: $brandBlue;
+                h2 { color: $brandBlue;} 
+            }
+            &.delete {
+                color: #F0314A;
+                h2 { color: #F0314A;} 
+            }
+        }
+        main {
+            background-color: #F5F7FA;
+            padding: 50px 60px 25px;
+            min-height: 200px;
+            display: block;
+            input[type="text"] {
+                padding:15px 20px;
+                box-shadow: 0px 2px 3px rgba(black,.15);
+                border-bottom: 1px solid transparent;
+                &:focus {
+                    box-shadow: 0px 2px 3px rgba($brandBlue,.15);
+                }
+            }
+            .upload {
+                text-align: center;
+                padding: 30px 20px;
+                margin: 40px 0 0;
+                border: 2px dashed #dadada;
+                color:$darkGray;
+                cursor: pointer;
+                p {
+                    color: #dadada;
+                }
+            }
+            p {
+                font-size: 17px;
+                line-height: 20px;
+                color: #141E34;
+            }
+            label {
+                opacity: 0.54;
+                font-size: 16px;
+                line-height: 19px;
+                color: #141E34;
+            }
+        }
+        footer {
+            text-align: center;
+            background-color: #F5F7FA;
+            padding: 20px;
+            
+            .btn {
+                margin-right: 15px;
+                &.btn-close {
+                    background: none;
+                    border:1px solid #aeb3bd;
+                    color: #aeb3bd;
+                    &:hover {
+                        border-color: 1px solid darken(#aeb3bd, 10%);
+                    }
+                }
+                &:hover {
+                    // background: #7C828F;
+                  //   color: #fff;
+                }
+                &.filled {
+                    color: #fff;
+                }
+                &:last-of-type {
+                    margin-right:0;
+                }
+                &.action {
+                    opacity: .65;
+                    pointer-events:none;
+                    transition: opacity .35s ease;
+                    &.open {
+                        opacity: 1;
+                        pointer-events: inherit;
+                    }
+                }
+            }
+            &.delete {
+                .btn {
+                    &.filled {
+                        background-color: #F0314A;
+                        border: 1px solid #F0314A;
+                        &:hover {
+                            background-color: darken(#F0314A, 10%);
+                            border: 1px solid  darken(#F0314A, 10%);                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.open {
+        opacity: 1;
+        transform: scale(1);
+        visibility: inherit;
+        .modal  {
+        transform: scale(1);
+        opacity: 1;
+        }
+    }
+}
