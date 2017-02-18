@@ -67,7 +67,6 @@ text-transform: uppercase;
 
 .show-suggustions {
      .suggestion {
-       visibility: inherit !important;
-       opacity: .65 !important;
+         display: flex !important;
     }
 }
