@@ -63,3 +63,10 @@ text-transform: uppercase;
     }
 }
 }
+
+.show-suggustions {
+     .suggestion {
+         display: flex !important;
+         opacity: .65;
+    }
+}

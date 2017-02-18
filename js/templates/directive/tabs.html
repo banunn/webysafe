@@ -75,7 +75,7 @@
             </div> 
         </main>
         <footer class="upload" ng-show="modal == 'upload'">
-             <button class="btn filled action" ng-class="{'open': itemName.length > 0}" ng-click="deleteItem(itemName); showModal = false; newItem(currentList, itemName);">Add Document</button>
+             <button class="btn filled action" ng-class="{'open': itemName.length > 0}" ng-click="newItem(currentList, itemName);">Add Document</button>
              <button class="btn btn-close" ng-click="showModal = false">Cancel</button>
         </footer>
     </div>

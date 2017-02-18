@@ -29,6 +29,7 @@ app.directive('webTabs', ['$timeout', function($timeout) {
       scope.$watch("data",function( newValue, oldValue, scope ) {
         if(angular.isDefined(newValue)) {
             scope.activeTab = scope.activeTab || newValue[start].parent || scope.data[0].parent;
+            scope.current =  newValue[start] || scope.data[0];
         }
       }, true);
 
@@ -49,12 +50,6 @@ app.directive('webTabs', ['$timeout', function($timeout) {
           scope.newTab = '';
           scope.addTab = false;
       }
-      scope.newItem = function(list, name) {
-        if(!list) {list = scope.data[0]}
-        var item =  { "name": name, "modified": Date.now(), "path": "../path/to/document"};  
-        list.content.push(item);
-        scope.itemName = '';
-      }
       
       scope.sugModal = function(name) {
           scope.itemName = name;
@@ -63,22 +58,27 @@ app.directive('webTabs', ['$timeout', function($timeout) {
       }
 
       scope.deleteItem = function(name) {
-          console.log(name)
             for (var i = scope.current.content.length - 1; i >= 0; i--) {
                  if (scope.current.content[i].name == name) { 
                      scope.current.content.splice(i, 1);
                 } 
             }
       }
+      
+      scope.newItem = function(list, name) {
+        if(!list) {list = scope.data[0]}
+        scope.deleteItem(name);
+        var item =  { "name": name, "modified": Date.now(), "path": "../path/to/document"};  
+        list.content.push(item);
+        scope.itemName = '';
+        scope.showModal = false;
+      }
       scope.deleteTab = function (tab) {
-          console.log('Clicked!');
-          console.log(tab);
           for (var i = scope.data.length - 1; i >= 0; i--) {
                 if (scope.data[i].parent == tab.parent) { 
                     scope.data.splice(i, 1);
                      scope.activeTab = scope.data[0].parent;
                      scope.current = scope.data[0];
-                     console.log(scope.activeTab);
                 }
             }
         }

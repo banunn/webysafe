@@ -79,7 +79,7 @@
                 height: 47px;
                 input[type="text"] {
                     width: 80%;
-                    padding: 10px;
+                    padding:$listPad;
                     margin: 5px auto;
                 }
                 i {
@@ -106,7 +106,7 @@
         width: 100%;
         & > div {
             display: table-cell;
-            padding: 10px;
+            padding:$listPad;
             vertical-align: middle;
             text-transform: uppercase;
             color: #c0c0c0;
@@ -146,11 +146,8 @@
             &:hover {
                 background: #f1f1f1;
             }
-            &.suggestion {
-                opacity: .65;
-            }
             & > div {
-                padding: 10px;
+                padding:$listPad;
                 display: flex;
                 align-items: center;
                 flex-grow: 1;
@@ -189,9 +186,7 @@
                 cursor: pointer;
             }
             &.suggestion {
-                transition: opacity .35s ease;
-                visibility: hidden;
-                opacity: 0;
+                display: none;
                 a {
                     cursor: pointer;
                     display: inline-block;
@@ -229,7 +224,7 @@
 }
 
 .tabs {
-        input[type="checkbox"] {
+    input[type="checkbox"] {
         display: none;
     }
     label {
