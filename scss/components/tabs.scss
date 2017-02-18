@@ -139,10 +139,10 @@
         padding:0;
         list-style: none;
         li {
-            display: table;
-            table-layout: fixed;
+            display: flex;
             width: 100%;
             border-top: 1px solid #c9c9c9;
+            justify-content: flex-start;
             &:hover {
                 background: #f1f1f1;
             }
@@ -150,27 +150,30 @@
                 opacity: .65;
             }
             & > div {
-                display: table-cell;
                 padding: 10px;
-                vertical-align: middle;
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
             }
             & div:nth-of-type(1) {
-                width: 25px;
-                //padding-left: 70px;
+                flex-basis: 35px;
+                max-width: 35px;
             }
             & div:nth-of-type(2) {
-                width: 25px;
-                padding-left: 5px;
+                flex-basis: 45px;
+                max-width: 45px;
+                padding-left: 10px;
+                justify-content: center;
             }
             & div:nth-of-type(3) {
                 width: 25%;
-                padding-left: 15px;
+                padding-left: 25px;
             }
             & div:nth-of-type(4) {
                 width: 25%;
                 padding-left: 15px;
-                text-align: right;
                 color: #818181;
+                justify-content: flex-end;
             }
             i {
                 font-size: 16px;
@@ -229,35 +232,34 @@
         input[type="checkbox"] {
         display: none;
     }
-    input[type="checkbox"]:checked+label {
-        &:after {
-            content: 'check';
-            font-size: 15px;
-            position: relative;
-            left: -15px;
-        }
-    }
     label {
             cursor: pointer;
-            font-family: 'Material Icons';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 24px;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-feature-settings: 'liga';
-            -webkit-font-smoothing: antialiased;
+            position: relative;
         &:before {
             content: '';
             display: inline-block;
             height: 15px;
             width: 15px;
             border: 1px solid #ccc;
+        }
+    }
+        input[type="checkbox"]:checked+label {
+        &:after {
+            @extend .material-icons;
+            content: 'check';
+            background: rgba($brandBlue, .2);
+            border: 1px solid rgba($brandBlue, .15);
+            color: $brandBlue;
+            font-size: 15px;
+            position: absolute;
+            left: 0px;
+            width: 15px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0px;
+            left: 0px;
         }
     }
 }
